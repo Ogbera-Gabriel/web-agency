@@ -1,5 +1,6 @@
+import { Button } from '@/components/ui/button';
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
-import Image from 'next/image';
+
 
 export default function Home() {
   return (
@@ -9,7 +10,9 @@ export default function Home() {
         <UserButton />
       </SignedIn>
       <SignedOut>
-        <SignInButton />
+        <Button asChild>
+          <SignInButton />
+        </Button>
       </SignedOut>
     </main>
   );
