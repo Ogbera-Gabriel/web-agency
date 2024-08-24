@@ -28,12 +28,23 @@ export default clerkMiddleware((auth, request) => {
     );
   }
 
+  if (url.pathname === '/sign-in' || url.pathname === '/sign-up') {
+      return NextResponse.redirect(new URL(`/agency/sign-in`, request.url))
+  }
+
   if (
     url.pathname === '/' ||
     (url.pathname === '/site' && url.host === process.env.NEXT_PUBLIC_DOMAIN)
   ) {
     return NextResponse.rewrite(new URL('/site', request.url));
   }
+
+  if (
+      url.pathname.startsWith('/agency') ||
+      url.pathname.startsWith('/subaccount')
+    ) {
+      return NextResponse.rewrite(new URL(`${pathWithSearchParams}`, request.url))
+   }
 
   if (!isPublicRoute(request)) {
     auth().protect();
