@@ -30,6 +30,9 @@ export default function Home() {
           Our straightforward pricing plans are tailored to meet your needs. If
           {" you're"} not ready to commit you can get started for free.
         </p>
+        <div className='flex items-center gap-4 flex-wrap mt-6'>
+
+        </div>
       </section>
     </>
   );
